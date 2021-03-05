@@ -7,7 +7,7 @@
 // Output: true
 
 /**
- * Time Complexity: O(log n)
+ * Time Complexity: O(n)
  * Space Complexity: O(n)
  *
  * @param {number} x
@@ -26,7 +26,7 @@ var isPalindrome = function (x) {
 };
 
 /**
- * Time Complexity: O(log n)
+ * Time Complexity: O(n)
  * Space Complexity: O(1)
  *
  * @param {number} x
