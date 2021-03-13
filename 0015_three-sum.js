@@ -7,7 +7,7 @@
 // Output: [[-1,-1,2],[-1,0,1]]
 
 /**
- * 待優化的暴力法
+ * 暴力法
  *
  * Time Complexity: O(n^3)
  * Space Complexity: O(n)
@@ -18,20 +18,18 @@
 var threeSum = function (nums) {
   nums.sort((x, y) => x - y);
 
-  const numsSet = new Set();
+  const arrSet = new Set();
 
   for (let i = 0; i < nums.length; i++) {
     for (let j = i + 1; j < nums.length; j++) {
-      const remainder = 0 - nums[i] - nums[j];
-
-      for (let k = nums.length - 1; k > j; k--) {
-        if (nums[k] === remainder) {
-          numsSet.add(`${nums[i]}:${nums[j]}:${remainder}`);
+      for (let k = j + 1; k < nums.length; k++) {
+        if (nums[i] + nums[j] + nums[k] === 0) {
+          arrSet.add([nums[i], nums[j], nums[k]].join());
           break;
         }
       }
     }
   }
 
-  return [...numsSet].map((item) => item.split(":"));
+  return Array.from(arrSet).map((item) => item.split(","));
 };
