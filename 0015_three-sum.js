@@ -33,3 +33,57 @@ var threeSum = function (nums) {
 
   return Array.from(arrSet).map((item) => item.split(","));
 };
+
+/**
+ * Two Pointers
+ *
+ * Time Complexity: O(n^2)
+ * Space Complexity: O(1)
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+function threeSum(arr) {
+  let res = [];
+  let target = 0;
+
+  arr.sort((a, b) => a - b);
+
+  if (arr.length < 3) return res;
+
+  for (let i = 0; i < arr.length - 2; i++) {
+    if (i > 0 && arr[i] == arr[i - 1]) {
+      continue;
+    }
+
+    if (arr[i] > target) {
+      break;
+    }
+
+    let j = i + 1;
+    let k = arr.length - 1;
+
+    while (j < k) {
+      let sum = arr[i] + arr[j] + arr[k];
+
+      if (sum === target) {
+        res.push([arr[i], arr[j], arr[k]]);
+
+        while (arr[j] === arr[j + 1]) {
+          j++;
+        }
+        while (arr[k] === arr[k - 1]) {
+          k--;
+        }
+
+        j++;
+        k--;
+      } else if (sum < target) {
+        j++;
+      } else {
+        k--;
+      }
+    }
+  }
+
+  return res;
+}
