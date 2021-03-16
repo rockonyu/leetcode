@@ -38,7 +38,8 @@ var threeSum = function (nums) {
  * Two Pointers
  *
  * Time Complexity: O(n^2)
- * Space Complexity: O(1)
+ * Space Complexity: O(n)
+ *
  * @param {number[]} nums
  * @return {number[][]}
  */
