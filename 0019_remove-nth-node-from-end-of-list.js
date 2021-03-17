@@ -72,3 +72,31 @@ var removeNthFromEnd = function (head, n) {
 
   return first.next;
 };
+
+/**
+ * Time complexity : O(L), L is length of the list
+ * Space complexity : O(1)
+ *
+ * @param {ListNode} head
+ * @param {number} n
+ * @return {ListNode}
+ */
+var removeNthFromEnd = function (head, n) {
+  const dummy = new ListNode(null);
+  dummy.next = head;
+  let first = dummy;
+  let second = dummy;
+
+  for (let i = 0; i <= n; i++) {
+    first = first.next;
+  }
+
+  while (first != null) {
+    first = first.next;
+    second = second.next;
+  }
+
+  second.next = second.next.next;
+
+  return dummy.next;
+};
