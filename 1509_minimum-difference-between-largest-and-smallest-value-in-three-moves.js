@@ -1,3 +1,13 @@
+// Given an array nums, you are allowed to choose one element of nums and change it by any value in one move.
+
+// Return the minimum difference between the largest and smallest value of nums after perfoming at most 3 moves.
+
+// Example:
+// Input: nums = [5,3,2,4]
+// Output: 0
+// Explanation: Change the array [5,3,2,4] to [2,2,2,2].
+// The difference between the maximum and minimum is 2-2 = 0.
+
 /**
  * Time complexity : O(n)
  * Space complexity : O(1)
