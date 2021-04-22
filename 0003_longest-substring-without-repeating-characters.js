@@ -39,7 +39,7 @@ var lengthOfLongestSubstring = function (s) {
 };
 
 /**
- * 單迴圈解，並使用 flag 紀錄開頭位置
+ * 使用變數紀錄最後不重複的起始位置與相同字元前一次出現的位置
  *
  * Time Complexity: O(n)
  * Space Complexity: O(n)
@@ -47,26 +47,27 @@ var lengthOfLongestSubstring = function (s) {
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function (s) {
+var lengthOfLongestSubstring = function(s) {
+    
   if (s.length <= 1) {
     return s.length;
   }
 
-  let result = 0;
-  let start = 0;
-  let charMap = new Map();
+  let maxLength = 0;
+  let lastNotDuplicateIndex = 0;
+  let charIndexMap = new Map();
 
   for (let i = 0; i < s.length; i++) {
-    // 重複字元出現需要重新設定開頭位置
-    if (charMap.has(s[i])) {
-      // 開頭位置為與自身相同字元的 index + 1 或當前開頭位置之間的最大值
-      start = Math.max(start, charMap.get(s[i]) + 1);
+    if (charIndexMap.has(s[i])) {
+      // 判斷最後不重複字元 index 與先前相同字元的 index 誰比較大
+      lastNotDuplicateIndex = Math.max(lastNotDuplicateIndex, charIndexMap.get(s[i]) + 1);
     }
 
-    // 保存當前 index 與字元供後續迴圈判斷
-    charMap.set(s[i], i);
-    result = Math.max(result, i - start + 1);
+    // 保存當前字元的 index 供後續判斷是否重複
+    charIndexMap.set(s[i], i);
+    maxLength = Math.max(maxLength, i - lastNotDuplicateIndex + 1);
   }
 
-  return result;
+  return maxLength;
 };
+
