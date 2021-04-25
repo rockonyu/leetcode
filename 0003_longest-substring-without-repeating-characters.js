@@ -59,8 +59,9 @@ var lengthOfLongestSubstring = function(s) {
 
   for (let i = 0; i < s.length; i++) {
     if (charIndexMap.has(s[i])) {
+        const lastSameCharacterIndex = charIndexMap.get(s[i]);
       // 判斷最後不重複字元 index 與先前相同字元的 index 誰比較大
-      lastNotDuplicateIndex = Math.max(lastNotDuplicateIndex, charIndexMap.get(s[i]) + 1);
+      lastNotDuplicateIndex = Math.max(lastNotDuplicateIndex, lastSameCharacterIndex + 1);
     }
 
     // 保存當前字元的 index 供後續判斷是否重複
@@ -70,4 +71,3 @@ var lengthOfLongestSubstring = function(s) {
 
   return maxLength;
 };
-
